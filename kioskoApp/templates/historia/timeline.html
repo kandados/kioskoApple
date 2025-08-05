@@ -1,0 +1,29 @@
+{% extends 'historia/base.html' %}
+{% load static %}
+
+{% block title %}Línea de Tiempo | Kiosko Apple{% endblock %}
+
+{% block content %}
+<div style="padding: 2rem; max-width: 1000px; margin: auto;">
+
+  <h1>Línea de Tiempo de Apple</h1>
+  <p>
+    Explora la evolución de los productos Apple desde 1976 en esta visualización gráfica elaborada por <strong>David Han</strong>. 
+    Esta imagen recopila todos los modelos lanzados por Apple hasta el momento de su publicación y te ayudará a tener una visión clara de su evolución.
+  </p>
+
+  <div style="margin-top: 2rem; text-align: center;">
+    <img
+      src=" https://www.flickr.com/photos/david_han/623205062/"
+      alt="Línea de tiempo Apple por David Han"
+      style="width: 100%; max-width: 1000px; border-radius: 12px; border: 2px solid #333;" />
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="{% url 'inicio' %}" style="color: #ccc; text-decoration: none; font-weight: bold;">
+      ⬅️ Volver al inicio
+    </a>
+  </div>
+
+</div>
+{% endblock %}

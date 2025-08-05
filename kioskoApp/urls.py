@@ -1,0 +1,43 @@
+# kioskoApp/urls.py
+from django.urls import path
+from .views import (
+    InicioView,
+    HistoriaView,
+    FundadoresView,
+    TimelineView,
+    MacintoshView,
+    iPodView,
+    iPhoneView,
+    iPadView,
+    SoftwareView,
+    ProductosView,
+    TecnologiaInnovacionView,
+    LegadoView,
+    EsteProyectoView,
+    SteveWozniakView,
+    SteveJobsView,
+    PublicidadView,
+    CuriosidadesListView,
+    DiseñoView,
+)
+
+urlpatterns = [
+    path('', InicioView.as_view(), name='inicio'),
+    path('historia/', HistoriaView.as_view(), name='historia'),
+    path('fundadores/', FundadoresView.as_view(), name='fundadores'),
+    path('steve-wozniak/', SteveWozniakView.as_view(), name='steve_wozniak'),
+    path('steve-jobs/', SteveJobsView.as_view(), name='steve_jobs'),
+    path('macintosh/', MacintoshView.as_view(), name='macintosh'),
+    path('ipod/', iPodView.as_view(), name='ipod'),
+    path('iphone/', iPhoneView.as_view(), name='iphone'),
+    path('ipad/', iPadView.as_view(), name='ipad'),
+    path('linea-temporal/', TimelineView.as_view(), name='linea_temporal'),
+    path('productos/', ProductosView.as_view(), name='productos'),
+    path('software/', SoftwareView.as_view(), name='software'),
+    path('tecnologia_innovacion/', TecnologiaInnovacionView.as_view(), name='tecnologia_innovacion'),
+    path('diseño/', DiseñoView.as_view(), name='diseño'),
+    path('curiosidades/', CuriosidadesListView.as_view(), name='curiosidades'),
+    path('publicidad/', PublicidadView.as_view(), name='publicidad'),
+    path('legado/', LegadoView.as_view(), name='legado'),
+    path('este-proyecto/', EsteProyectoView.as_view(), name='este_proyecto'),
+]

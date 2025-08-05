@@ -1,0 +1,125 @@
+{% extends 'historia/base.html' %}
+{% load static %}
+
+{% block title %}Inicio | Kiosko Apple{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1920px;
+    height: calc(100vh - 40px); /* espacio seguro */
+    box-sizing: border-box;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .menu-item {
+    position: relative;
+    width: 280px;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 2px solid #333;
+    transition: transform 0.2s ease;
+  }
+
+  .menu-item:hover {
+    transform: scale(1.03);
+    z-index: 2;
+  }
+
+  .menu-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .menu-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #eee;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      height: auto;
+    }
+
+    .menu-item {
+      width: 90%;
+      height: 180px;
+    }
+  }
+</style>
+
+<div class="menu-grid">
+  <a class="menu-item" href="{% url 'historia' %}">
+    <img src="{% static 'img/historia.png' %}" alt="Historia">
+    <div class="menu-text">Historia de Apple</div>
+  </a>
+  <a class="menu-item" href="{% url 'steve_jobs' %}">
+    <img src="{% static 'img/steve.png' %}" alt="Steve Jobs">
+    <div class="menu-text">Steve Jobs</div>
+  </a>
+  <a class="menu-item" href="{% url 'steve_wozniak' %}">
+    <img src="{% static 'img/wozniak.png' %}" alt="Steve Wozniak">
+    <div class="menu-text">Steve Wozniak</div>
+  </a>
+  <a class="menu-item" href="{% url 'fundadores' %}">
+    <img src="{% static 'img/fundadores.png' %}" alt="Fundadores">
+    <div class="menu-text">Otros Fundadores</div>
+  </a>
+  <a class="menu-item" href="{% url 'productos' %}">
+    <img src="{% static 'img/productos.png' %}" alt="Productos">
+    <div class="menu-text">Productos</div>
+  </a>
+  <a class="menu-item" href="{% url 'linea_temporal' %}">
+    <img src="{% static 'img/timeline.png' %}" alt="Línea de Tiempo">
+    <div class="menu-text">Línea de Tiempo</div>
+  </a>
+  <a class="menu-item" href="{% url 'curiosidades' %}">
+    <img src="{% static 'img/curiosidades.png' %}" alt="Curiosidades">
+    <div class="menu-text">Curiosidades</div>
+  </a>
+  <a class="menu-item" href="{% url 'publicidad' %}">
+    <img src="{% static 'img/publicidad.png' %}" alt="Publicidad">
+    <div class="menu-text">Publicidad</div>
+  </a>
+  <a class="menu-item" href="{% url 'diseño' %}">
+    <img src="{% static 'img/diseno.png' %}" alt="Diseño">
+    <div class="menu-text">Diseño</div>
+  </a>
+  <a class="menu-item" href="{% url 'tecnologia_innovacion' %}">
+    <img src="{% static 'img/tecnologia.png' %}" alt="Innovación">
+    <div class="menu-text">Innovación</div>
+  </a>
+  <a class="menu-item" href="{% url 'legado' %}">
+    <img src="{% static 'img/legado.png' %}" alt="Legado">
+    <div class="menu-text">Legado de Apple</div>
+  </a>
+  <a class="menu-item" href="{% url 'este_proyecto' %}">
+    <img src="{% static 'img/info.png' %}" alt="Sobre el Proyecto">
+    <div class="menu-text">Sobre este Proyecto</div>
+  </a>
+</div>
+{% endblock %}

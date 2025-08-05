@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Sobre este Proyecto | Kiosko Apple{% endblock %}
+
+{% block content %}
+  <div style="padding: 2rem; max-width: 800px; margin: auto;">
+    <h1>Acerca del Proyecto Kiosko de Apple</h1>
+    <p>Este proyecto es un kiosko virtual interactivo que permite explorar la historia de Apple de forma visual y táctil.</p>
+    <p>Construido con <strong>Python</strong> y <strong>Django</strong>, y ejecutado en un <strong>miniPC Chuwi con Ubuntu</strong>, este sistema está pensado para mostrar información obtenida desde distintas webs mediante scraping.</p>
+
+    <div style="margin-top: 2rem;">
+      <a href="{% url 'inicio' %}" style="color: #ccc; text-decoration: none; font-weight: bold;">
+        ⬅️ Volver al inicio
+      </a>
+    </div>
+  </div>
+{% endblock %}
