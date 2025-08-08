@@ -10,7 +10,10 @@ import csv
 from reportlab.pdfgen import canvas
 from io import BytesIO
 import openai
+
+from django.views.generic import TemplateView
 import os
+from django.conf import settings
 
 # Vistas generales
 class InicioView(TemplateView):
@@ -36,6 +39,18 @@ class SteveWozniakView(TemplateView):
 
 class HistoriaView(TemplateView):
     template_name = 'historia/historia.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        historia_path = os.path.join(settings.MEDIA_ROOT, 'historia_textos', 'historia.txt')
+
+        if os.path.exists(historia_path):
+            with open(historia_path, 'r', encoding='utf-8') as file:
+                context['contenido_historia'] = file.read()
+        else:
+            context['contenido_historia'] = 'No se pudo cargar la historia.'
+
+        return context
 
 class SteveJobsView(TemplateView):
     template_name = 'historia/steve_jobs.html'
@@ -130,3 +145,6 @@ class CuriosidadesListView(View):
             "pregunta": query,
             "respuesta": respuesta
         })
+
+    ###Aqui acaba la parte de curiosidades
+

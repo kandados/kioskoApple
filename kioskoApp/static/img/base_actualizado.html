@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Kiosko Apple{% endblock %}</title>
+    <style>
+        :root {
+            --verde: #74C043;
+            --amarillo: #FDDC32;
+            --naranja: #FB8C00;
+            --rojo: #F44336;
+            --violeta: #9C27B0;
+            --azul: #2196F3;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--verde) 0px, var(--verde) 60px,
+                var(--amarillo) 60px, var(--amarillo) 120px,
+                var(--naranja) 120px, var(--naranja) 180px,
+                var(--rojo) 180px, var(--rojo) 240px,
+                var(--violeta) 240px, var(--violeta) 300px,
+                var(--azul) 300px, var(--azul) 360px
+            );
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .contenido {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+            background-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .encabezado {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .encabezado img {
+            width: 64px;
+            height: auto;
+            margin-bottom: 12px;
+        }
+
+        .encabezado h1 {
+            font-size: 2.4rem;
+            margin: 0;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-iconos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-icono {
+            width: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <div class="encabezado">
+            <img src="{% static 'img/apple-logo-white.png' %}" alt="Apple logo blanco">
+            <h1>AppleVerse: The iArchives</h1>
+        </div>
+
+        
+    <header style="display: flex; align-items: center; justify-content: center; gap: 20px; padding: 30px 0;">
+        <img src="{% static 'img/apple-logo-white.png' %}" alt="Apple logo blanco" style="height: 60px;">
+        <h1 style="font-size: 2.2rem; margin: 0; color: white;">AppleVerse: The iArchives</h1>
+    </header>
+
+    {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

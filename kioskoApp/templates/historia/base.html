@@ -1,18 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Kiosko Apple{% endblock %}</title>
+
+    {% block extra_styles %}{% endblock %}
+
     <style>
-        body {
+        html, body {
             margin: 0;
-            font-family: sans-serif;
-            background: #111;
-            color: #eee;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            background-color: #000000;
+        }
+
+        .contenido {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            height: 100%;
+            background-color: transparent;
+            position: relative;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        header img {
+            width: 60px;
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            margin: 10px 0 0;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        header h2 {
+            font-size: 1.4rem;
+            margin: 6px 0 0;
+            color: white;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-iconos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu-icono {
+            width: 150px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    {% block content %}{% endblock %}
+    <div class="contenido">
+        <header>
+            <img src="{% static 'img/logoAppleArcoiris.png' %}" alt="Apple logo blanco">
+            <h1>AppleVerse</h1>
+            <h2>The iArchives</h2>
+        </header>
+
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

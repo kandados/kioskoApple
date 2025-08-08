@@ -1,5 +1,7 @@
 # kioskoApp/urls.py
+
 from django.urls import path
+from .views import HistoriaView
 from .views import (
     InicioView,
     HistoriaView,

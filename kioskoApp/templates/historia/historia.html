@@ -1,10 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<a href="{% url 'inicio' %}">Volver al inicio</a>
-</body>
-</html>
+{% extends 'historia/base.html' %}
+{% block title %}Historia de Apple{% endblock %}
+
+{% block content %}
+<style>
+    .historia-container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #fff;
+    }
+
+    .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1.5rem;
+    }
+
+    .tab-button {
+        flex: 1;
+        background-color: #222;
+        border: 1px solid #555;
+        color: #fff;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        text-align: center;
+        transition: background-color 0.3s;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+        background-color: #555;
+    }
+
+    #contenido-tab {
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background-color: #111;
+        border-radius: 10px;
+        border: 1px solid #333;
+        white-space: pre-line;
+    }
+
+    .volver {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .volver a {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        background-color: #333;
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .volver a:hover {
+        background-color: #555;
+    }
+</style>
+
+<div class="historia-container">
+    <h1>Historia de Apple</h1>
+    <p>Apple Inc., originalmente llamada Apple Computer, Inc., es una corporación multinacional que crea y comercializa productos electrónicos de consumo y software informático asociado, y es un distribuidor digital de contenido multimedia. Las principales líneas de productos de Apple son el teléfono inteligente iPhone, la tableta iPad y la computadora personal Macintosh . La empresa ofrece sus productos en línea y tiene una cadena de tiendas minoristas conocida como Apple Stores. Los fundadores Steve Jobs, Steve Wozniak y Ronald Wayne crearon Apple Computer Co. el 1 de abril de 1976 para comercializar la computadora de escritorio Apple I de Wozniak,y Jobs y Wozniak incorporaron la empresa el 3 de enero de 1977, en Cupertino, California.
+
+Durante más de tres décadas, Apple Computer fue predominantemente un fabricante de computadoras personales, incluidas las líneas Apple II, Macintosh y Power Mac, pero enfrentó ventas difíciles y una baja participación de mercado durante la década de 1990. Jobs, que había sido expulsado de la empresa en 1985, regresó a Apple en 1997 después de que Apple comprara su empresa NeXT. Al año siguiente se convirtió en director general interino de la empresa, que más tarde se convirtió en permanente. Posteriormente, Jobs inculcó una nueva filosofía corporativa de productos reconocibles y diseño simple, comenzando con el iMac original en 1998.
+
+Con la introducción del exitoso reproductor de música iPod en 2001 y la iTunes Music Store en 2003, Apple se estableció como líder en las industrias de electrónica de consumo y ventas de medios, lo que llevó a eliminar "Computadora" del nombre de la empresa en 2007. La compañía también es conocida por su gama iOS de productos de teléfonos inteligentes, reproductores multimedia y tabletas que comenzó con el iPhone, seguido por el iPod Touch y luego el iPad. Al 30 de junio de 2015, Apple era la corporación que cotiza en bolsa más grande del mundo por capitalización de mercado,
+
+
+        La historia de Apple Inc. es una de las más fascinantes del mundo de la tecnología. Desde sus humildes inicios en un garaje hasta convertirse en una de las empresas más influyentes del mundo, Apple ha marcado un antes y un después en la informática personal, la telefonía móvil y el diseño industrial.
+    </p>
+
+    <div class="tabs">
+        <div class="tab-button" onclick="cargarTexto('origenes_fundacion.txt', this)">Orígenes y Fundación</div>
+        <div class="tab-button" onclick="cargarTexto('crecimiento_productos.txt', this)">Crecimiento y Productos</div>
+        <div class="tab-button" onclick="cargarTexto('crisis_regreso_jobs.txt', this)">Crisis y Regreso de Jobs</div>
+        <div class="tab-button" onclick="cargarTexto('apple_moderna.txt', this)">Apple Moderna</div>
+    </div>
+
+    <div id="contenido-tab">
+        <em>Selecciona una sección para visualizar su contenido.</em>
+    </div>
+
+    <div class="volver">
+        <a href="{% url 'inicio' %}">⬅️ Volver al Menú Principal</a>
+    </div>
+</div>
+
+<script>
+    function cargarTexto(archivo, boton) {
+        // Desactivar pestañas activas
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        boton.classList.add('active');
+
+        fetch(`/media/historia_textos/${archivo}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Error al cargar el archivo.');
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('contenido-tab').textContent = data;
+            })
+            .catch(error => {
+                document.getElementById('contenido-tab').textContent = 'No se pudo cargar el contenido.';
+                console.error(error);
+            });
+    }
+</script>
+{% endblock %}
